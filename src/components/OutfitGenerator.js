@@ -1,4 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';React, { useCallback, useEffect } from 'react';
+
+function OutfitGenerator(props) {
+  const { pinterestBoards, userStyle /* other props/state */ } = props;
+
+  // Memoize generateOutfit so it only changes when its dependencies change
+  const generateOutfit = useCallback(() => {
+    // existing implementation of generateOutfit, using pinterestBoards, userStyle, etc.
+  }, [pinterestBoards.length, userStyle /*, include any other values used inside */]);
+
+  // Use generateOutfit as the sole dependency
+  useEffect(() => {
+    generateOutfit();
+  }, [generateOutfit]);
+
+  // ...
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, RefreshCw, Heart, Download, Share2 } from 'lucide-react';
 import { getAllStyleNames, getRandomOutfit, getStyleInfo } from '../data/styleData';
